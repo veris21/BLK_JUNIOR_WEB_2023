@@ -1,0 +1,30 @@
+kasus/ Masalah : 
+- Membuat daftar Siswa BLKI 
+- Komponen 
+    - NamaSiswa - String  
+    - NIS - Number 
+    - Kelas - String - Join Table 
+    - JenisKelamin 
+    - Alamat 
+    - JenisPelatihan
+    - NomorHP 
+    - Email 
+
+- Breakdown 
+    - Utama 
+        - table daftar_siswa 
+            - Id Int Auto_increment primary key
+            - NamaSiswa Varchar(50) NOT NULL 
+            - NIS Int(10) NOT NULL
+            - idKelas Int (10) NOT NULL FOREIGN KEY 
+            - JenisKelamin enum LAKI-LAKI, PEREMPUAN NOT NULL 
+            - Alamat TEXT NULL 
+            - JenisPelatihan Varchar(50)
+            - NomorHp Varchar(15)
+            - Email Varchar(50)
+            - Status ENUM AKTIF, NONAKTIF 
+            
+    - Pendukung 
+        - table kelas 
+            - IdKelas Int Auto_increment primary key 
+            - NamaKelas Varchar(50) NOT NULL
