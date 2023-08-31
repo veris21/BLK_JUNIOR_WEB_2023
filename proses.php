@@ -24,7 +24,7 @@ if(isset($_GET['aksi'])){
     if($_GET['aksi']=='delete'){
         echo "Sedang Melakukan Penghapusan Data :". $_GET['id'];
     }else if($_GET['aksi']=='update'){
-        echo "Sedang Melakukan Penghapusan Data :". $_GET['id'];
+        echo "Sedang Melakukan Update Data :". $_GET['id'];
     }else{
 
     }
