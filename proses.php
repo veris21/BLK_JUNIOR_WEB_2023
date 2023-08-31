@@ -20,7 +20,7 @@ $Email = isset($_POST['Email']) ? $_POST['Email'] : '';
 $JenisPelatihan = isset($_POST['JenisPelatihan']) ? $_POST['JenisPelatihan'] : '';
 $Status = isset($_POST['Status']) ? $_POST['Status'] : 'NONAKTIF';
 
-if(isset($_GET['aksi'])){
+if(isset($_GET['aksi'])){ // TRUE atau FALSE
     if($_GET['aksi']=='delete'){
         if(!isset($_GET['id'])){
             echo "Aksi Ada Tapi ID Tidak Ada";
@@ -38,20 +38,10 @@ if(isset($_GET['aksi'])){
     }else if($_GET['aksi']=='update'){
         echo "Sedang Melakukan Update Data :". $_GET['id'];
     }else{
-
+        echo "Sedang Melakukan Input Data Baru";
     }
 }else{
     echo "Aksi Tidak Di Ijinkan";
 }
-
-// echo $NamaSiswa .'<br>';
-// echo $NIS.'<br>';
-// echo $JenisKelamin.'<br>';
-// echo $IdKelas.'<br>';
-// echo $Alamat.'<br>';
-// echo $NomorHp.'<br>';
-// echo $Email.'<br>';
-// echo $JenisPelatihan.'<br>';
-// echo $Status.'<br>';
 
 ?>
