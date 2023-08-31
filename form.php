@@ -35,7 +35,7 @@ $status_koneksi =  "SUCCESS";
             $message = "Formulir Tambah Data";
         }
     ?>
-        <div class="card mt-3">
+        <div class="card mt-3 mb-3">
             <div class="card-header">
                 <h3 class="card-title">
                     <?= $message  ?>
@@ -89,6 +89,7 @@ $status_koneksi =  "SUCCESS";
                             <option value="NONAKTIF">NONAKTIF</option>
                         </select>
                     </div>
+                    <button type="submit" class="btn btn-primary">Simpan Data <i class="fa fa-save"></i></button>
                 </form>
             </div>
         </div>
