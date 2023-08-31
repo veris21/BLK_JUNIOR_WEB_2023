@@ -35,9 +35,8 @@ $status_koneksi =  "SUCCESS";
         }
     ?>
     <?php 
-    $query = "SELECT * FROM daftar_siswa WHERE Id = $id";
+    $query = "select * from daftar_siswa where Id = $id";
     $eksekusi_kueri = mysqli_query($conn, $query);
-    $nomor = 1;
     while ($peserta = mysqli_fetch_array($eksekusi_kueri)) {?>
     <h4>Nama  : <?php echo $peserta['NamaSiswa']; ?></h4>
     <h4>NIS  : <?php echo $peserta['NIS']; ?></h4>
