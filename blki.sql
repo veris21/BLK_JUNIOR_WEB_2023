@@ -64,7 +64,7 @@ INSERT INTO
   )
 VALUES
   (
-    1,
+    NULL,
     'Anyong',
     '000000001',
     1,
@@ -76,7 +76,7 @@ VALUES
     'AKTIF'
   ),
   (
-    2,
+  NULL,
     'Jospi',
     '000000002',
     2,
@@ -88,7 +88,7 @@ VALUES
     'AKTIF'
   ),
   (
-    3,
+    NULL,
     'Faisal Rahman',
     '000000003',
     1,
@@ -100,7 +100,7 @@ VALUES
     'AKTIF'
   ),
   (
-    4,
+    NULL,
     'Zendar',
     '000000004',
     2,
@@ -112,7 +112,7 @@ VALUES
     'AKTIF'
   ),
   (
-    5,
+    NULL,
     'Juanda',
     '000000005',
     2,

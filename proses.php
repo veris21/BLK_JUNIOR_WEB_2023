@@ -37,8 +37,23 @@ if(isset($_GET['aksi'])){ // TRUE atau FALSE
             echo "Gagal Melakukan Perintah Hapus data";
         }
     }else if($_GET['aksi']=='update'){
+        $id = $_GET['id'];
         echo "Sedang Melakukan Update Data :". $_GET['id'];
         // Fungsi Update Data
+        $sql_update = "UPDATE daftar_siswa SET `NamaSiswa`='$NamaSiswa', `NIS` = '$NIS', `JenisKelamin` = '$JenisKelamin', `IdKelas`='$IdKelas', `Alamat`= '$Alamat', `NomorHp`='$NomorHp', `Email`='$Email', `JenisPelatihan`='$JenisPelatihan', `Status` = '$Status' WHERE Id = $id;";
+        // Fungsi Simpan /Insert Data Ke Database
+        $eksekusi_update = mysqli_query($conn, $sql_update);
+        mysqli_close($conn);
+        if($eksekusi_update){
+            header("location:index.php");
+        }else{
+            
+            echo "Gagal Melakukan Perintah Update data";
+            echo "<hr>";
+            echo "<pre>";
+            echo $sql_update;
+            echo "</pre>";
+        }
     }else{
         $sql_insert = "INSERT INTO daftar_siswa(`NamaSiswa`, `NIS`, `JenisKelamin`, `IdKelas`, `Alamat`, `NomorHp`, `Email`, `JenisPelatihan`, `Status`) 
         VALUES('$NamaSiswa', '$NIS','$JenisKelamin', '$IdKelas', '$Alamat', '$NomorHp', '$Email', '$JenisPelatihan', '$Status');";
