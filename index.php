@@ -66,7 +66,7 @@ $status_koneksi =  "SUCCESS";
                 <td>
                     <a href="detail.php?id=<?php echo $peserta['Id'];?>" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
                     <a href="form.php?update=<?php echo $peserta['Id'];?>" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
-                    <a href="proses.php?aksi=delete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                    <a href="proses.php?delete=<?php echo $peserta['Id'];?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
             <?php } ?>

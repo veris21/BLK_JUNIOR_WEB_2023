@@ -20,14 +20,26 @@ $Email = isset($_POST['Email']) ? $_POST['Email'] : '';
 $JenisPelatihan = isset($_POST['JenisPelatihan']) ? $_POST['JenisPelatihan'] : '';
 $Status = isset($_POST['Status']) ? $_POST['Status'] : 'NONAKTIF';
 
-echo $NamaSiswa .'<br>';
-echo $NIS.'<br>';
-echo $JenisKelamin.'<br>';
-echo $IdKelas.'<br>';
-echo $Alamat.'<br>';
-echo $NomorHp.'<br>';
-echo $Email.'<br>';
-echo $JenisPelatihan.'<br>';
-echo $Status.'<br>';
+if(isset($_GET['aksi'])){
+    if($_GET['aksi']=='delete'){
+        echo "Sedang Melakukan Penghapusan Data :". $_GET['delete'];
+    }else if($_GET['aksi']=='update'){
+        echo "Sedang Melakukan Penghapusan Data :". $_GET['update'];
+    }else{
+
+    }
+}else{
+    echo "Aksi Tidak Di Ijinkan";
+}
+
+// echo $NamaSiswa .'<br>';
+// echo $NIS.'<br>';
+// echo $JenisKelamin.'<br>';
+// echo $IdKelas.'<br>';
+// echo $Alamat.'<br>';
+// echo $NomorHp.'<br>';
+// echo $Email.'<br>';
+// echo $JenisPelatihan.'<br>';
+// echo $Status.'<br>';
 
 ?>
