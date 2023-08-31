@@ -22,9 +22,9 @@ $Status = isset($_POST['Status']) ? $_POST['Status'] : 'NONAKTIF';
 
 if(isset($_GET['aksi'])){
     if($_GET['aksi']=='delete'){
-        echo "Sedang Melakukan Penghapusan Data :". $_GET['delete'];
+        echo "Sedang Melakukan Penghapusan Data :". $_GET['id'];
     }else if($_GET['aksi']=='update'){
-        echo "Sedang Melakukan Penghapusan Data :". $_GET['update'];
+        echo "Sedang Melakukan Penghapusan Data :". $_GET['id'];
     }else{
 
     }
