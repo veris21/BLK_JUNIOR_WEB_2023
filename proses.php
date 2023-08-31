@@ -9,7 +9,7 @@ $conn = mysqli_connect($servername, $username, $password, $database);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-
+// ================ [ Kumpulan Tangkapan Data/Dari Form.php ] ======================
 $NamaSiswa = isset($_POST['NamaSiswa']) ? $_POST['NamaSiswa'] : 'Tidak Di input';
 $NIS = isset($_POST['NIS']) ? $_POST['NIS'] : '000000000' ;
 $JenisKelamin = isset($_POST['JenisKelamin']) ? $_POST['JenisKelamin'] : 'LAKI-LAKI';
@@ -19,7 +19,7 @@ $NomorHp = isset($_POST['NomorHp']) ? $_POST['NomorHp'] : '';
 $Email = isset($_POST['Email']) ? $_POST['Email'] : '';
 $JenisPelatihan = isset($_POST['JenisPelatihan']) ? $_POST['JenisPelatihan'] : '';
 $Status = isset($_POST['Status']) ? $_POST['Status'] : 'NONAKTIF';
-
+// ================ [ Kumpulan Tangkapan Data/Dari Form.php ] ======================
 if(isset($_GET['aksi'])){ // TRUE atau FALSE
     if($_GET['aksi']=='delete'){
         if(!isset($_GET['id'])){
@@ -30,6 +30,7 @@ if(isset($_GET['aksi'])){ // TRUE atau FALSE
         // Logic Untuk Melakukan Hapus data
         $sql = "DELETE FROM daftar_siswa WHERE Id=$id";
         $eksekusi_hapus = mysqli_query($conn, $sql);
+        mysqli_close($conn);
         if($eksekusi_hapus){
             header("location:index.php");
         }else{
@@ -37,12 +38,27 @@ if(isset($_GET['aksi'])){ // TRUE atau FALSE
         }
     }else if($_GET['aksi']=='update'){
         echo "Sedang Melakukan Update Data :". $_GET['id'];
+        // Fungsi Update Data
     }else{
-        echo "Sedang Melakukan Input Data Baru";
-        echo $Alamat;
+        $sql_insert = "INSERT INTO daftar_siswa(`NamaSiswa`, `NIS`, `JenisKelamin`, `IdKelas`, `Alamat`, `NomorHp`, `Email`, `JenisPelatihan`, `Status`) 
+        VALUES('$NamaSiswa', '$NIS','$JenisKelamin', '$IdKelas', '$Alamat', '$NomorHp', '$Email', '$JenisPelatihan', '$Status');";
+        // Fungsi Simpan /Insert Data Ke Database
+        $eksekusi_simpan = mysqli_query($conn, $sql_insert);
+        mysqli_close($conn);
+        if($eksekusi_simpan){
+            header("location:index.php");
+        }else{
+            
+            echo "Gagal Melakukan Perintah Simpan data";
+            echo "<hr>";
+            echo "<pre>";
+            echo $sql_insert;
+            echo "</pre>";
+        }
     }
 }else{
     echo "Aksi Tidak Di Ijinkan";
+    header("location: index.php");
 }
 
 ?>
