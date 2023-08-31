@@ -39,6 +39,7 @@ if(isset($_GET['aksi'])){ // TRUE atau FALSE
         echo "Sedang Melakukan Update Data :". $_GET['id'];
     }else{
         echo "Sedang Melakukan Input Data Baru";
+        echo $Alamat;
     }
 }else{
     echo "Aksi Tidak Di Ijinkan";

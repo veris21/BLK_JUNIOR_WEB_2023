@@ -31,8 +31,10 @@ $status_koneksi =  "SUCCESS";
         if(isset($_GET['update'])){
             $id = $_GET['update'];
             $message=  "Formulir Update Data : ID - ".$id;
+            $action = "?aksi=update&id=$id";
         }else{
             $message = "Formulir Tambah Data";
+            $action = "?aksi=create";
         }
     ?>
         <div class="card mt-3 mb-3">
@@ -42,7 +44,7 @@ $status_koneksi =  "SUCCESS";
                 </h3>
             </div>
             <div class="card-body">
-                <form action="proses.php" method="post" >
+                <form action="proses.php<?php echo $action ?>" method="post" >
                     <div class="form-group mb-3">
                         <label for="">Nama Siswa</label>
                         <input type="text" name="NamaSiswa" id="NamaSiswa" class="form-control" placeholder="Input Nama Lengkap">
