@@ -22,7 +22,19 @@ $Status = isset($_POST['Status']) ? $_POST['Status'] : 'NONAKTIF';
 
 if(isset($_GET['aksi'])){
     if($_GET['aksi']=='delete'){
-        echo "Sedang Melakukan Penghapusan Data :". $_GET['id'];
+        if(!isset($_GET['id'])){
+            echo "Aksi Ada Tapi ID Tidak Ada";
+            die;
+        }
+        $id = $_GET['id'];
+        // Logic Untuk Melakukan Hapus data
+        $sql = "DELETE FROM daftar_siswa WHERE Id=$id";
+        $eksekusi_hapus = mysqli_query($conn, $sql);
+        if($eksekusi_hapus){
+            header("location:index.php");
+        }else{
+            echo "Gagal Melakukan Perintah Hapus data";
+        }
     }else if($_GET['aksi']=='update'){
         echo "Sedang Melakukan Update Data :". $_GET['id'];
     }else{
