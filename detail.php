@@ -1,34 +1,73 @@
-<?php require 'koneksi.php';?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
-    <div class="container">
-        <h1 class="mb-3 text-center">Details Data Peserta </h1>
-        <a href="index.php" class="btn btn-outline-dark"><i class="fa fa-arrow-left"></i> Kembali Ke Daftar Peserta </a>
-        <?php 
-        if(isset($_GET['id'])){
-            $id = $_GET['id'];
-        }else{
-            header("location: index.php");
-        }
-    ?>
-    <?php 
+<?php require 'header.php';
+    if(isset($_GET['id'])){
+        $id = $_GET['id'];
+    }else{
+        header("location: index.php");
+    }
     $query = "select * from daftar_siswa where Id = $id";
     $eksekusi_kueri = mysqli_query($conn, $query);
     mysqli_close($conn);
     while ($peserta = mysqli_fetch_array($eksekusi_kueri)) {?>
-    <h4>Nama  : <?php echo $peserta['NamaSiswa']; ?></h4>
-    <h4>NIS  : <?php echo $peserta['NIS']; ?></h4>
-    <h4>Jenis Pelatihan  : <?php echo $peserta['JenisPelatihan']; ?></h4>
-    <?php } ?>
+    <h1 class="mb-3 text-center">Details Data Peserta </h1>
+    <div class="card">
+        <div class="card-body">
+        <!-- Konten Details Siswa -->
+        <div class="row"></div>
+        <div class="col-sm-6">
+            <img alt="" width="100%" class="rounded mx-auto d-block" src="https://www.cnet.com/a/img/resize/31287c06237e5b6d72227672d792cdfb1e67cdc5/hub/2023/07/18/adec38b2-8321-43be-a643-17f4a633cf01/john-wick-4-2.jpg?auto=webp&fit=crop&height=675&precrop=1707,959,x26,y33&width=1200" />
+        </div>
+        <div class="col-sm-6">
+            <div class="table-responsive">
+            <table class="table table-stripped" width="100%">
+                <tr>
+                    <td width="35%">Nama</td>
+                    <td width="3%">:</td>
+                    <td><?php echo $peserta['NamaSiswa']; ?></td>
+                </tr>
+                <tr>
+                    <td width="35%">NIS</td>
+                    <td width="3%">:</td>
+                    <td> <?php echo $peserta['NIS']; ?></td>
+                </tr>
+                <tr>
+                    <td width="35%">Jenis Kelamin</td>
+                    <td width="3%">:</td>
+                    <td> <?php echo $peserta['JenisKelamin']; ?></td>
+                </tr>
+                <tr>
+                    <td width="35%">Nomor HP</td>
+                    <td width="3%">:</td>
+                    <td> <?php echo $peserta['NomorHp']; ?></td>
+                </tr>
+                <tr>
+                    <td width="35%">Email</td>
+                    <td width="3%">:</td>
+                    <td> <?php echo $peserta['Email']; ?></td>
+                </tr>
+                <tr>
+                    <td width="35%">Alamat</td>
+                    <td width="3%">:</td>
+                    <td> <?php echo $peserta['Alamat']; ?></td>
+                </tr>
+                
+                <tr>
+                    <td width="35%">Jenis Pelatihan</td>
+                    <td width="3%">:</td>
+                    <td> <?php echo $peserta['JenisPelatihan']; ?></td>
+                </tr>
+                <tr>
+                    <td width="35%">Status Siswa</td>
+                    <td width="3%">:</td>
+                    <td> <?php echo $peserta['Status']; ?></td>
+                </tr>
+            </table>
+            </div>
+        </div>
+        <!-- End Konten Siswa -->
+        </div>
+        <div class="card-footer">
+        <a href="index.php" class="btn btn-outline-dark"><i class="fa fa-arrow-left"></i> Kembali Ke Data Peserta </a>
+        </div>
     </div>
-</body>
-</html>
+<?php } ?>
+<?php require 'footer.php'; ?>
