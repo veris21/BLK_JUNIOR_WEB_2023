@@ -14,7 +14,7 @@
         <!-- Konten Details Siswa -->
         <div class="row"></div>
         <div class="col-sm-6">
-            <img alt="" width="100%" class="rounded mx-auto d-block" src="<?php echo $peserta['foto']; ?>" />
+            <img alt="" width="100%" class="rounded mx-auto d-block" src="<?php echo $peserta['Foto']; ?>" />
         </div>
         <div class="col-sm-6">
             <div class="table-responsive">
