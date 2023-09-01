@@ -14,7 +14,7 @@
         <!-- Konten Details Siswa -->
         <div class="row"></div>
         <div class="col-sm-6">
-            <img alt="" width="100%" class="rounded mx-auto d-block" src="https://www.cnet.com/a/img/resize/31287c06237e5b6d72227672d792cdfb1e67cdc5/hub/2023/07/18/adec38b2-8321-43be-a643-17f4a633cf01/john-wick-4-2.jpg?auto=webp&fit=crop&height=675&precrop=1707,959,x26,y33&width=1200" />
+            <img alt="" width="100%" class="rounded mx-auto d-block" src="<?php echo $peserta['foto']; ?>" />
         </div>
         <div class="col-sm-6">
             <div class="table-responsive">

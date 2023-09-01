@@ -29,37 +29,82 @@ if(isset($_GET['aksi'])){ // TRUE atau FALSE
         }
     }else if($_GET['aksi']=='update'){
         $id = $_GET['id'];
-        echo "Sedang Melakukan Update Data :". $_GET['id'];
-        // Fungsi Update Data
-        $sql_update = "UPDATE daftar_siswa SET `NamaSiswa`='$NamaSiswa', `NIS` = '$NIS', `JenisKelamin` = '$JenisKelamin', `IdKelas`='$IdKelas', `Alamat`= '$Alamat', `NomorHp`='$NomorHp', `Email`='$Email', `JenisPelatihan`='$JenisPelatihan', `Status` = '$Status' WHERE Id = $id;";
-        // Fungsi Simpan /Insert Data Ke Database
-        $eksekusi_update = mysqli_query($conn, $sql_update);
-        mysqli_close($conn);
-        if($eksekusi_update){
-            header("location:index.php");
+        if($_FILES['foto']){
+            $ekstensi_diperbolehkan	= array('png','jpg');
+            $nama = $_FILES['foto']['name'];
+            $x = explode('.', $nama);
+            $ekstensi = strtolower(end($x));
+            $ukuran	= $_FILES['foto']['size'];
+            $file_tmp = $_FILES['foto']['tmp_name'];	
+            $new_name = date("Y-m-dHis").'.'.$ekstensi;
+            if($ukuran < 1044070){ // dalam Byte 1044070 = 10
+                // Fungsi Update Data
+                move_uploaded_file($file_tmp, 'upload/'.$new_name);
+                $sql_update = "UPDATE daftar_siswa SET `NamaSiswa`='$NamaSiswa', `NIS` = '$NIS', `JenisKelamin` = '$JenisKelamin', `IdKelas`='$IdKelas', `Alamat`= '$Alamat', `NomorHp`='$NomorHp', `Email`='$Email', `JenisPelatihan`='$JenisPelatihan', `Status` = '$Status', `foto`= 'upload/$new_name' WHERE Id = $id;";
+                // Fungsi Simpan /Insert Data Ke Database
+                $eksekusi_update = mysqli_query($conn, $sql_update);
+                mysqli_close($conn);
+                if($eksekusi_update){
+                    header("location:index.php");
+                }else{
+                    echo "Gagal Melakukan Perintah Update data";
+                    echo "<hr>";
+                    echo "<pre>";
+                    echo $sql_update;
+                    echo "</pre>";
+                }
+            }
         }else{
-            echo "Gagal Melakukan Perintah Update data";
-            echo "<hr>";
-            echo "<pre>";
-            echo $sql_update;
-            echo "</pre>";
+            // Fungsi Update Data
+            $sql_update = "UPDATE daftar_siswa SET `NamaSiswa`='$NamaSiswa', `NIS` = '$NIS', `JenisKelamin` = '$JenisKelamin', `IdKelas`='$IdKelas', `Alamat`= '$Alamat', `NomorHp`='$NomorHp', `Email`='$Email', `JenisPelatihan`='$JenisPelatihan', `Status` = '$Status' WHERE Id = $id;";
+            // Fungsi Simpan /Insert Data Ke Database
+            $eksekusi_update = mysqli_query($conn, $sql_update);
+            mysqli_close($conn);
+            if($eksekusi_update){
+                header("location:index.php");
+            }else{
+                echo "Gagal Melakukan Perintah Update data";
+                echo "<hr>";
+                echo "<pre>";
+                echo $sql_update;
+                echo "</pre>";
+            }
         }
+        
     }else{
-        $sql_insert = "INSERT INTO daftar_siswa(`NamaSiswa`, `NIS`, `JenisKelamin`, `IdKelas`, `Alamat`, `NomorHp`, `Email`, `JenisPelatihan`, `Status`) 
-        VALUES('$NamaSiswa', '$NIS','$JenisKelamin', '$IdKelas', '$Alamat', '$NomorHp', '$Email', '$JenisPelatihan', '$Status');";
-        // Fungsi Simpan /Insert Data Ke Database
-        $eksekusi_simpan = mysqli_query($conn, $sql_insert);
-        mysqli_close($conn);
-        if($eksekusi_simpan){
-            header("location:index.php");
-        }else{
-            
-            echo "Gagal Melakukan Perintah Simpan data";
-            echo "<hr>";
-            echo "<pre>";
-            echo $sql_insert;
-            echo "</pre>";
+        if($_FILES['foto']){
+            $ekstensi_diperbolehkan	= array('png','jpg');
+            $nama = $_FILES['foto']['name'];
+            $x = explode('.', $nama);
+            $ekstensi = strtolower(end($x));
+            $ukuran	= $_FILES['foto']['size'];
+            $file_tmp = $_FILES['foto']['tmp_name'];	
+            $new_name = date("Y-m-dHis").'.'.$ekstensi;
+            if($ukuran < 1044070){ // dalam Byte 1044070 = 10MB
+                move_uploaded_file($file_tmp, 'upload/'.$new_name);
+                 $sql_insert = "INSERT INTO daftar_siswa(`NamaSiswa`, `NIS`, `JenisKelamin`, `IdKelas`, `Alamat`, `NomorHp`, `Email`, `JenisPelatihan`, `Status`, `foto`) 
+                    VALUES('$NamaSiswa', '$NIS','$JenisKelamin', '$IdKelas', '$Alamat', '$NomorHp', '$Email', '$JenisPelatihan', '$Status', 'upload/$new_name');";
+                    // Fungsi Simpan /Insert Data Ke Database
+                    $eksekusi_simpan = mysqli_query($conn, $sql_insert);
+                    mysqli_close($conn);
+                    if($eksekusi_simpan){
+                        header("location:index.php");
+                    }else{
+                        
+                        echo "Gagal Melakukan Perintah Simpan data";
+                        echo "<hr>";
+                        echo "<pre>";
+                        echo $sql_insert;
+                        echo "</pre>";
+                    }
+            }
+            // echo "Ada Foto Terkirim Dari Form";
+            // echo "<br>";
+            // echo $file_tmp;
+            // echo "<br>";
+            // echo $nama;
         }
+       
     }
 }else{
     echo "Aksi Tidak Di Ijinkan";

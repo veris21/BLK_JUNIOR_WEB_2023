@@ -40,7 +40,7 @@
                 </h3>
             </div>
             <div class="card-body">
-                <form action="proses.php<?php echo $action ?>" method="post" >
+                <form action="proses.php<?php echo $action ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group mb-3">
                         <label for="">Nama Siswa</label>
                         <input type="text" name="NamaSiswa" id="NamaSiswa" class="form-control" value="<?php echo $NamaSiswa; ?>" placeholder="Input Nama Lengkap">
@@ -80,6 +80,12 @@
                         <label for="">Jenis Pelatihan</label>
                         <input type="text" name="JenisPelatihan" id="JenisPelatihan" class="form-control" value="<?php echo $JenisPelatihan ?>">
                     </div>
+                    <!-- Ini Adalah Input File -->
+                    <div class="form-group mb-3">
+                        <label for="">Foto Siswa</label>
+                        <input type="file" name="foto" id="foto" accept="image/*" class="form-control">
+                    </div>
+                    <!-- -->
                     <div class="form-group mb-3">
                         <label for="">Status</label>
                         <select name="Status" id="Status" class="form-control">
