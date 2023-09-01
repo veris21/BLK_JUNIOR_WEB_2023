@@ -47,7 +47,6 @@ if(isset($_GET['aksi'])){ // TRUE atau FALSE
         if($eksekusi_update){
             header("location:index.php");
         }else{
-            
             echo "Gagal Melakukan Perintah Update data";
             echo "<hr>";
             echo "<pre>";
