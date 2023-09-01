@@ -1,5 +1,6 @@
 <?php
 $title = "Balai Latihan Kerja Industri Prov. Bangka Belitung";
+$titlesm = "BLKI BABEL";
 $servername = "localhost"; // Hostname Server Database
 $username = "root"; // Username Dari Database (Sesuaikan Dengan Setting Masing - Masing)
 $password = "root"; // Password Dari Database (Sesuaikan Dengan Setting Masing - Masing)

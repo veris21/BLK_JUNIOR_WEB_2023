@@ -12,12 +12,12 @@
     <div class="card">
         <div class="card-body">
         <!-- Konten Details Siswa -->
-        <div class="row"></div>
-        <div class="col-sm-6">
-            <img alt="" width="100%" class="rounded mx-auto d-block" src="<?php echo $peserta['Foto']; ?>" />
+        <div class="d-flex">
+        <div class="m-4">
+            <img alt="" width="100%" class="rounded mx-auto d-block" src="<?php echo $peserta['Foto'] ?? 'https://placehold.co/600x600?text=No+Image+Found'; ?>" />
         </div>
-        <div class="col-sm-6">
-            <div class="table-responsive">
+        <div class="m-4">
+            <h4 class="text-center">Data Profil Siswa</h4>
             <table class="table table-stripped" width="100%">
                 <tr>
                     <td width="35%">Nama</td>
@@ -61,7 +61,6 @@
                     <td> <?php echo $peserta['Status']; ?></td>
                 </tr>
             </table>
-            </div>
         </div>
         <!-- End Konten Siswa -->
         </div>
