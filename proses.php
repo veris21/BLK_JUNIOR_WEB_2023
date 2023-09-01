@@ -1,14 +1,5 @@
 <?php 
-$servername = "localhost"; // Hostname Server Database
-$username = "root"; // Username Dari Database (Sesuaikan Dengan Setting Masing - Masing)
-$password = "root"; // Password Dari Database (Sesuaikan Dengan Setting Masing - Masing)
-$database = "blki"; // Nama database (Sesuaikan Dengan Nama database Masing - Masing)
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $database);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+require 'koneksi.php';
 // ================ [ Kumpulan Tangkapan Data/Dari Form.php ] ======================
 $NamaSiswa = isset($_POST['NamaSiswa']) ? $_POST['NamaSiswa'] : 'Tidak Di input';
 $NIS = isset($_POST['NIS']) ? $_POST['NIS'] : '000000000' ;

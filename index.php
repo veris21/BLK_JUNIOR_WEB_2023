@@ -1,36 +1,6 @@
-<?php
-$title = "Balai Latihan Kerja Industri Prov. Bangka Belitung";
-$servername = "localhost"; // Hostname Server Database
-$username = "root"; // Username Dari Database (Sesuaikan Dengan Setting Masing - Masing)
-$password = "root"; // Password Dari Database (Sesuaikan Dengan Setting Masing - Masing)
-$database = "blki"; // Nama database (Sesuaikan Dengan Nama database Masing - Masing)
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $database);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-    $status_koneksi =  "FAILED";
-}
-$status_koneksi =  "SUCCESS";
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $title ?></title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
-    <div class="container">
-    <h1><?= $title ?></h1>
-    <hr>
+<?php require 'header.php'; ?>
     <p class="mb-3">Selamat Datang Di Sistem Management Peserta Pelatihan <?= $title ?></p>
-    
     <a href="form.php" class="btn btn-success btn-sm mb-3">Tambah Data Peserta <i class="fa fa-plus"></i></a>
-
     <table class="table table-bordered table-hover table-striped" width="100%">
         <thead>
             <tr align="center">
@@ -72,6 +42,5 @@ $status_koneksi =  "SUCCESS";
             <?php } ?>
         </tbody>
     </table>
-    </div>
-</body>
-</html>
+    
+<?php require 'footer.php'; ?>
